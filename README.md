@@ -1,6 +1,11 @@
 # Node API 1 Project Starter Code
+<<<<<<< HEAD
+git clone -b <branchname> <remote-repo-url>
+## Topics
+=======
 
 ## Introduction
+>>>>>>> main
 
 - Building a RESTful API.
 - Performing CRUD operations.
