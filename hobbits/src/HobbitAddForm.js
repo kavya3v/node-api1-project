@@ -1,13 +1,12 @@
-import React,{useState,useEffect} from 'react';
+import React,{useState} from 'react';
 import {useHistory} from 'react-router-dom';
 import {Form,Button, Label,Input} from 'reactstrap'
 import {connect} from 'react-redux';
-import {getUsers,addUsers} from './actions';
+import {addUsers} from './actions';
 
 function HobbitAddForm(props){
     const history=useHistory();
-    console.log('in add form')
-    const {getUsers,addUsers}= props
+    const {addUsers}= props
     const [newHobbit,setNewHobbit]=useState({
         name:'',
         bio:''
@@ -22,15 +21,12 @@ function HobbitAddForm(props){
 
     const handleSubmit=(e)=>{
         e.preventDefault();
-        console.log('submit',newHobbit)
         addUsers(newHobbit);
-        getUsers();
         history.push('/');
         setNewHobbit({
             name:'',
             bio:''
         })
-
     }
 
 return(
@@ -65,4 +61,4 @@ const mapStateToProps =(state)=>{
     }
 }
 
-export default connect(mapStateToProps,{getUsers,addUsers})(HobbitAddForm);
+export default connect(mapStateToProps,{addUsers})(HobbitAddForm);

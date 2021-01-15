@@ -10,19 +10,17 @@ function HobbitCard(props){
     const {deleteUsers} = props
     
     const handleDelete=()=>{
-     console.log('to delete')
      deleteUsers(props.item.id);
-      
     }
 
     const handleUpdate=()=>{
-       
         history.push(`/updatehobbits/${props.item.id}`)
        }
 
 return(
-    <div >
-       <Card className="hobbitCards">
+    <div className="hobbitCards">
+        <div>
+       <Card className="hobbitCard">
            <CardTitle><b>{props.item.name}</b></CardTitle>
            <CardSubtitle>{props.item.bio}</CardSubtitle>
            <Button color="info"
@@ -31,8 +29,10 @@ return(
 
            <Button color="danger"
              className= "m-3"
+             outline="border"
              onClick={handleDelete}>Delete</Button>
        </Card>
+       </div>
     </div>
 )
 }

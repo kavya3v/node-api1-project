@@ -5,17 +5,18 @@ import HobbitCard from './HobbitCard';
 import {connect} from 'react-redux';
 import {getUsers,addUsers,deleteUsers,updateUsers} from './actions';
 
-
 function Hobbits(props){
 const history=useHistory();
-const {getUsers,addUsers,updateUsers} = props;
+const {getUsers}=props;
+ 
 
 useEffect(()=>{
     getUsers()
-},[getUsers,addUsers,updateUsers])
+},[getUsers,props.changed])
 
   
 const addHobbits=()=>{
+    console.log(history)
     history.push('./addhobbits')
 }
 
@@ -30,9 +31,7 @@ return(
         <div> 
         {props.isLoading ? "Please wait..." :
         props.userInfo.map(item=>{
-            return <HobbitCard key={item.id} item={item}/>
-            // console.log('item in userinfo=',item)
-            
+            return <HobbitCard   key={item.id} item={item}/>
         })
         }
         </div>
@@ -44,7 +43,8 @@ const mapStateToProps =(state)=>{
     return{
         isLoading:state.isLoading,
         userInfo:state.userInfo,
-        error:state.error
+        error:state.error,
+        changed:state.changed,
     }
 }
 
